@@ -349,7 +349,7 @@ html.mac .resizer{cursor:col-resize}
 /* Tabellen dürfen breiter als die Lesespalte werden */
 /* Tabellen so breit wie der Text; breitere Tabellen lassen sich seitlich schieben. Vergrößert (Knopf) nutzt die Tabelle ~80 % des Fensters. */
 .md .tablewrap{width:100%;margin-left:0}
-.t-body .tablewrap,.t-body .tablescroll{width:auto;margin-left:0}
+.t-body .tablewrap,.t-body .tablescroll{width:100%;margin-left:0}   /* vergrößert: Tabelle füllt das Fenster (80 %) */
 /* Einrichten (Startseite) */
 .setup .step{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--line)}
 .setup .num{width:24px;height:24px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-size:12px;color:var(--fg-2);flex:none;font-variant-numeric:tabular-nums}
@@ -364,3 +364,4 @@ html.mac .resizer{cursor:col-resize}
 
 #tableOverlay{align-items:center}
 @media (max-width:820px){ .t-dialog{width:100%} }
+.t-body.md{max-width:none;width:auto;margin:0;padding:16px}
