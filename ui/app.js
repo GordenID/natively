@@ -3,7 +3,7 @@
    oder im Browser vom lokalen Server (web/lib/server.js) über fetch und Server-Sent-Events.
    Aufbau: Zustand S → render*() schreibt HTML → ein Klick-Handler für alles (data-*-Attribute). */
 
-const VERSION = '0.1';
+const VERSION = '0.2';
 const MAC = !!(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.native);
 const WEB = !MAC && !!window.nativelyWeb;   // Browser mit lokalem natively-Server (npx natively-md)
 const GH = !MAC && !WEB && !!window.nativelyGitHub;   // Team-Version: Dateien aus GitHub (teams/client/github.js)
