@@ -1,0 +1,162 @@
+/* natively · Sprachen
+   Englisch ist Standard, Deutsch zur Auswahl (Umschalter unten in der Seitenleiste).
+   t('key', { n: 3 }) setzt {n} ein. Zählwörter: plural('files', n). */
+
+const I18N = {
+  en: {
+    'start': 'Home',
+    'nav.pinned': 'Pinned', 'nav.recent': 'Recently opened',
+    'nav.hide': 'Hide sidebar (⌘\\)', 'nav.show': 'Show sidebar (⌘\\)', 'nav.hideLabel': 'Hide sidebar', 'nav.showLabel': 'Show sidebar',
+    'nav.back': 'Back (⌘[)', 'nav.fwd': 'Forward (⌘])', 'nav.backLabel': 'Back', 'nav.fwdLabel': 'Forward',
+    'nav.newTab': 'New tab', 'nav.newTabKey': 'New tab (⌘T)', 'nav.search': 'Search', 'nav.searchKey': 'Search (⌘⇧M)', 'nav.sources': 'Sources',
+    'nav.aria': 'Navigation', 'nav.width': 'Sidebar width', 'tree.width': 'File list width', 'tabs.aria': 'Open files', 'tree.aria': 'Markdown files',
+    'lang.title': 'Sprache: Deutsch', 'lang.label': 'EN',
+    'tab.keep': ' · Double-click to keep', 'tab.close': 'Close {name}',
+    'crumb.path': 'Path', 'crumb.notFound': 'Not found', 'hit.clear': 'Clear highlights',
+    'tool.raw': 'Show source (⌥⌘U)', 'tool.rawLabel': 'Show source', 'tool.collapse': 'Collapse all folders',
+    'tool.tree': 'Show or hide file list (⌥⌘\\)', 'tool.treeLabel': 'Show or hide file list', 'tool.more': 'More',
+    'tree.loading': 'Looking for Markdown files …', 'tree.denied': 'No access, see Home → Setup',
+    'tree.hiddenTitle': 'Hidden because they contain no Markdown files:',
+    'tree.hidden.one': '1 folder without Markdown hidden', 'tree.hidden.many': '{n} folders without Markdown hidden',
+    'tree.noMatch': 'No file matches “{q}”.<br>Tip: start with <b>?</b> to search inside files.',
+    'tree.noSource': 'No source active.', 'tree.pickSources': 'Choose sources',
+    'tree.foot': '{files} in {sources}', 'tree.footFiltered': '{n} of {files}',
+    'tree.filter': 'Filter, or ? for full-text search',
+    'files.one': '1 Markdown file', 'files.many': '{n} Markdown files',
+    'sources.one': '1 source', 'sources.many': '{n} sources',
+    'folders.one': '1 folder', 'folders.many': '{n} folders',
+    'welcome.loadingTitle': 'Looking for your Markdown files …',
+    'welcome.loadingMac': 'Searching iCloud Drive, Google Drive and your Mac. On first launch macOS may ask whether natively may access these folders.',
+    'welcome.loadingWeb': 'Searching your cloud folders and your home folder.',
+    'welcome.title': 'Your Markdown files',
+    'welcome.lead': 'Your folders from the {fm}, but only where Markdown files live. Everything else stays hidden. When something changes, the list follows instantly.',
+    'sources.card': 'Sources · found automatically', 'sources.aria': 'Sources',
+    'sources.remove': 'Remove folder', 'sources.removeLabel': 'Remove {name}',
+    'btn.addFolder': 'Add folder', 'btn.rescan': 'Rescan',
+    'recent.opened': 'Recently opened', 'recent.changed': 'Recently changed',
+    'composer.placeholder': 'Search all Markdown files', 'composer.hint': 'Double-click a file to keep its tab',
+    'setup.title': 'Setup', 'setup.done': '{n} of 2 done',
+    'setup.default': 'natively as default app for Markdown files',
+    'setup.defaultOn': 'Double-click, “Open With” and the Quick Look preview in Finder use natively.',
+    'setup.defaultOff': 'Then a double-click in Finder opens every Markdown file here, and Quick Look offers “Open with natively”.',
+    'setup.makeDefault': 'Make default', 'setup.access': 'Access to your folders',
+    'setup.denied': 'macOS denied access to: {list}. Allow natively in System Settings, then check again.',
+    'setup.accessOk': 'macOS asks once per location on the first scan (Documents, iCloud Drive, Google Drive). All sources are readable.',
+    'setup.openSettings': 'Open Settings', 'setup.recheck': 'Check again',
+    'missing.title': 'File not found', 'missing.text': '{name} was moved, renamed or deleted.', 'btn.closeTab': 'Close tab',
+    'folderMissing.title': 'Folder not found', 'folderMissing.text': '{name} no longer contains Markdown files or was moved.', 'btn.back': 'Back',
+    'folder.folders': 'Folders', 'folder.files': 'Files', 'folder.in': '{files} in {folders}',
+    'doc.tooBig': 'File too large to preview', 'doc.tooBigText': 'Over 1 MB. Open it with another app.',
+    'doc.cloud': 'Only in the cloud', 'doc.cloudText': 'Downloading, it will appear here in a moment.',
+    'btn.reveal': 'Show in {fm}', 'btn.openDefault': 'Open with default app',
+    'doc.backlinks': 'LINKED FROM', 'doc.outline': 'Outline', 'doc.modified': 'Modified {d}', 'doc.lines': '{n} lines',
+    'search.aria': 'Search Markdown files', 'search.placeholder': 'Search all Markdown files', 'search.close': 'Close search', 'close': 'Close',
+    'search.titleOnly': 'Titles only', 'search.source': 'Source', 'search.sort': 'Sort', 'search.best': 'Best matches', 'search.recent': 'Recently changed',
+    'search.results': 'Search results', 'search.preview': 'Preview', 'search.all': 'All sources',
+    'search.files.one': '1 file', 'search.files.many': '{n} files', 'search.hits.one': '1 match', 'search.hits.many': '{n} matches',
+    'search.empty': 'Nothing found for “{q}”.', 'search.titleOnlyOn': '“Titles only” is on, try without it.',
+    'search.noPreview': 'No preview.', 'search.none': 'None',
+    'search.matches': 'MATCHES', 'search.excerpt': 'EXCERPT', 'search.linksTo': 'LINKS TO', 'search.linkedFrom': 'LINKED FROM',
+    'search.open': 'Open', 'search.keyOpen': 'Open', 'search.keyTab': 'New tab', 'search.keySelect': 'Select', 'search.keyClose': 'Close',
+    'menu.copyPath': 'Copy path', 'menu.pin': 'Pin to sidebar', 'menu.unpin': 'Unpin',
+    'menu.wide': 'Wide reading width', 'menu.narrow': 'Normal reading width', 'menu.raw': 'Show source', 'menu.formatted': 'Show formatted',
+    'table.title': 'Table · {name}', 'table.aria': 'Table', 'table.close': 'Close table', 'table.expand': 'Enlarge table',
+    'link.missing': 'Not found: {path}',
+    'toast.failed': 'Didn’t work: {msg}', 'toast.copied': 'Path copied', 'toast.pinned': 'Pinned', 'toast.unpinned': 'Unpinned',
+    'toast.folderAdded': 'Folder added', 'toast.folderRemoved': 'Folder removed', 'toast.scanned': 'Scanned: {sources}, {files}',
+    'toast.openFailed': 'Could not open the file', 'toast.scanFailed': 'Scan failed: {msg}', 'toast.notFound': 'Not found: {path}',
+    'toast.noMd': 'No Markdown files in {path}', 'toast.stopped': 'natively is no longer running. Restart with: npx natively-md',
+    'err.restarted': 'natively was restarted, please reload the page', 'err.server': 'Server not responding', 'err.macOnly': 'Only available in the Mac app',
+    'prompt.folder': 'Folder path (e.g. {ex}). Tip: copy the path in your {fm} and paste it here.',
+    'src.home.mac': 'Mac · Home folder', 'src.home.win': 'PC · Home folder', 'src.home': 'Home folder', 'src.extern': 'Opened',
+    'fm.mac': 'Finder', 'fm.win': 'Explorer', 'fm.other': 'file manager'
+  },
+  de: {
+    'start': 'Start',
+    'nav.pinned': 'Angeheftet', 'nav.recent': 'Zuletzt geöffnet',
+    'nav.hide': 'Seitenleiste ausblenden (⌘\\)', 'nav.show': 'Seitenleiste einblenden (⌘\\)', 'nav.hideLabel': 'Seitenleiste ausblenden', 'nav.showLabel': 'Seitenleiste einblenden',
+    'nav.back': 'Zurück (⌘[)', 'nav.fwd': 'Vorwärts (⌘])', 'nav.backLabel': 'Zurück', 'nav.fwdLabel': 'Vorwärts',
+    'nav.newTab': 'Neuer Tab', 'nav.newTabKey': 'Neuer Tab (⌘T)', 'nav.search': 'Suchen', 'nav.searchKey': 'Suchen (⌘⇧M)', 'nav.sources': 'Quellen',
+    'nav.aria': 'Navigation', 'nav.width': 'Breite der Seitenleiste', 'tree.width': 'Breite der Dateiliste', 'tabs.aria': 'Geöffnete Dateien', 'tree.aria': 'Markdown-Dateien',
+    'lang.title': 'Language: English', 'lang.label': 'DE',
+    'tab.keep': ' · Doppelklick zum Behalten', 'tab.close': '{name} schließen',
+    'crumb.path': 'Pfad', 'crumb.notFound': 'Nicht gefunden', 'hit.clear': 'Markierung entfernen',
+    'tool.raw': 'Quelltext anzeigen (⌥⌘U)', 'tool.rawLabel': 'Quelltext anzeigen', 'tool.collapse': 'Alle Ordner einklappen',
+    'tool.tree': 'Dateiliste ein- oder ausblenden (⌥⌘\\)', 'tool.treeLabel': 'Dateiliste ein- oder ausblenden', 'tool.more': 'Mehr',
+    'tree.loading': 'Suche MD-Dateien …', 'tree.denied': 'Kein Zugriff, siehe Start → Einrichten',
+    'tree.hiddenTitle': 'Ausgeblendet, weil keine MD-Dateien darin liegen:',
+    'tree.hidden.one': '1 Ordner ohne MD ausgeblendet', 'tree.hidden.many': '{n} Ordner ohne MD ausgeblendet',
+    'tree.noMatch': 'Keine Datei passt zu „{q}“.<br>Tipp: <b>?</b> davor sucht im Inhalt.',
+    'tree.noSource': 'Keine Quelle aktiv.', 'tree.pickSources': 'Quellen auswählen',
+    'tree.foot': '{files} in {sources}', 'tree.footFiltered': '{n} von {files}',
+    'tree.filter': 'Filtern, oder ? für Volltextsuche',
+    'files.one': '1 MD-Datei', 'files.many': '{n} MD-Dateien',
+    'sources.one': '1 Quelle', 'sources.many': '{n} Quellen',
+    'folders.one': '1 Ordner', 'folders.many': '{n} Ordnern',
+    'welcome.loadingTitle': 'Suche deine MD-Dateien …',
+    'welcome.loadingMac': 'iCloud Drive, Google Drive und dein Mac werden durchsucht. Beim ersten Start fragt macOS eventuell, ob natively auf diese Ordner zugreifen darf.',
+    'welcome.loadingWeb': 'Cloud-Ordner und dein Benutzerordner werden durchsucht.',
+    'welcome.title': 'Deine Markdown-Dateien',
+    'welcome.lead': 'Die Ordner aus dem {fm}, aber nur dort, wo MD-Dateien liegen. Alles andere ist ausgeblendet. Ändert sich etwas, zieht die Liste sofort mit.',
+    'sources.card': 'Quellen · automatisch gefunden', 'sources.aria': 'Quellen',
+    'sources.remove': 'Ordner entfernen', 'sources.removeLabel': '{name} entfernen',
+    'btn.addFolder': 'Ordner hinzufügen', 'btn.rescan': 'Erneut scannen',
+    'recent.opened': 'Zuletzt geöffnet', 'recent.changed': 'Zuletzt geändert',
+    'composer.placeholder': 'In allen Markdown-Dateien suchen', 'composer.hint': 'Doppelklick auf eine Datei behält den Tab',
+    'setup.title': 'Einrichten', 'setup.done': '{n} von 2 erledigt',
+    'setup.default': 'natively als Standard-App für MD-Dateien',
+    'setup.defaultOn': 'Doppelklick, „Öffnen mit“ und die Leertaste-Vorschau im Finder nutzen natively.',
+    'setup.defaultOff': 'Dann öffnet ein Doppelklick im Finder jede MD-Datei hier, und Quick Look bietet „Mit natively öffnen“.',
+    'setup.makeDefault': 'Als Standard festlegen', 'setup.access': 'Zugriff auf deine Ordner',
+    'setup.denied': 'macOS hat den Zugriff verweigert für: {list}. In den Systemeinstellungen natively erlauben, dann erneut prüfen.',
+    'setup.accessOk': 'macOS fragt beim ersten Scan einmal pro Ort (Dokumente, iCloud Drive, Google Drive). Alle Quellen sind lesbar.',
+    'setup.openSettings': 'Einstellungen öffnen', 'setup.recheck': 'Erneut prüfen',
+    'missing.title': 'Datei nicht gefunden', 'missing.text': '{name} wurde verschoben, umbenannt oder gelöscht.', 'btn.closeTab': 'Tab schließen',
+    'folderMissing.title': 'Ordner nicht gefunden', 'folderMissing.text': '{name} enthält keine MD-Dateien mehr oder wurde verschoben.', 'btn.back': 'Zurück',
+    'folder.folders': 'Ordner', 'folder.files': 'Dateien', 'folder.in': '{files} in {folders}',
+    'doc.tooBig': 'Datei zu groß für die Vorschau', 'doc.tooBigText': 'Über 1 MB. Öffne sie mit einer anderen App.',
+    'doc.cloud': 'Liegt nur in der Cloud', 'doc.cloudText': 'Wird gerade heruntergeladen und erscheint gleich hier.',
+    'btn.reveal': 'Im {fm} zeigen', 'btn.openDefault': 'Mit Standard-App öffnen',
+    'doc.backlinks': 'VERLINKT VON', 'doc.outline': 'Gliederung', 'doc.modified': 'Geändert {d}', 'doc.lines': '{n} Zeilen',
+    'search.aria': 'Suche in Markdown-Dateien', 'search.placeholder': 'In allen Markdown-Dateien suchen', 'search.close': 'Suche schließen', 'close': 'Schließen',
+    'search.titleOnly': 'Nur Titel', 'search.source': 'Quelle', 'search.sort': 'Sortierung', 'search.best': 'Beste Treffer', 'search.recent': 'Zuletzt geändert',
+    'search.results': 'Suchergebnisse', 'search.preview': 'Vorschau', 'search.all': 'Alle Quellen',
+    'search.files.one': '1 Datei', 'search.files.many': '{n} Dateien', 'search.hits.one': '1 Fundstelle', 'search.hits.many': '{n} Fundstellen',
+    'search.empty': 'Nichts gefunden für „{q}“.', 'search.titleOnlyOn': '„Nur Titel“ ist an, versuch es ohne.',
+    'search.noPreview': 'Keine Vorschau.', 'search.none': 'Keine',
+    'search.matches': 'FUNDSTELLEN', 'search.excerpt': 'AUSZUG', 'search.linksTo': 'VERLINKT AUF', 'search.linkedFrom': 'VERLINKT VON',
+    'search.open': 'Öffnen', 'search.keyOpen': 'Öffnen', 'search.keyTab': 'Neuer Tab', 'search.keySelect': 'Auswählen', 'search.keyClose': 'Schließen',
+    'menu.copyPath': 'Pfad kopieren', 'menu.pin': 'In der Seitenleiste anheften', 'menu.unpin': 'Nicht mehr anheften',
+    'menu.wide': 'Breite Lesebreite', 'menu.narrow': 'Normale Lesebreite', 'menu.raw': 'Quelltext anzeigen', 'menu.formatted': 'Formatiert anzeigen',
+    'table.title': 'Tabelle · {name}', 'table.aria': 'Tabelle', 'table.close': 'Tabelle schließen', 'table.expand': 'Tabelle vergrößern',
+    'link.missing': 'Nicht gefunden: {path}',
+    'toast.failed': 'Hat nicht geklappt: {msg}', 'toast.copied': 'Pfad kopiert', 'toast.pinned': 'Angeheftet', 'toast.unpinned': 'Nicht mehr angeheftet',
+    'toast.folderAdded': 'Ordner hinzugefügt', 'toast.folderRemoved': 'Ordner entfernt', 'toast.scanned': 'Gescannt: {sources}, {files}',
+    'toast.openFailed': 'Datei konnte nicht geöffnet werden', 'toast.scanFailed': 'Scan fehlgeschlagen: {msg}', 'toast.notFound': 'Nicht gefunden: {path}',
+    'toast.noMd': 'Keine MD-Dateien in {path}', 'toast.stopped': 'natively läuft nicht mehr. Neu starten mit: npx natively-md',
+    'err.restarted': 'natively wurde neu gestartet, bitte Seite neu laden', 'err.server': 'Server antwortet nicht', 'err.macOnly': 'Nur in der Mac-App verfügbar',
+    'prompt.folder': 'Pfad des Ordners (z. B. {ex}). Tipp: Pfad im {fm} kopieren und hier einfügen.',
+    'src.home.mac': 'Mac · Benutzerordner', 'src.home.win': 'PC · Benutzerordner', 'src.home': 'Benutzerordner', 'src.extern': 'Geöffnet',
+    'fm.mac': 'Finder', 'fm.win': 'Explorer', 'fm.other': 'Dateimanager'
+  }
+};
+const LANGS = Object.keys(I18N);
+let LANG = 'en';
+function setLang(l){ LANG = I18N[l] ? l : 'en'; document.documentElement.lang = LANG; }
+function t(key, vars){
+  // Team-Version (GitHub): Schlüssel mit Endung .gh ersetzen den normalen Text, falls vorhanden
+  const gh = typeof window !== 'undefined' && window.nativelyGitHub ? key + '.gh' : null;
+  let s = (gh && ((I18N[LANG] && I18N[LANG][gh]) ?? I18N.en[gh])) ?? (I18N[LANG] && I18N[LANG][key]) ?? I18N.en[key] ?? key;
+  if (vars) s = s.replace(/\{(\w+)\}/g, (m, k) => vars[k] !== undefined ? vars[k] : m);
+  return s;
+}
+/* plural('files', 3) → "3 Markdown files" */
+function plural(key, n){ return t(key + (n === 1 ? '.one' : '.many'), { n }); }
+/* Feste Texte in index.html: data-i18n (Text), data-i18n-title, data-i18n-aria, data-i18n-ph (Platzhalter) */
+function applyStatic(root = document){
+  root.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  root.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
+  root.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+  root.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+}
+if (typeof module !== 'undefined') module.exports = { I18N, t, plural };

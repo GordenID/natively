@@ -1,0 +1,5 @@
+app.local.json
+public/
+.vercel/
+.vercel
+.env*

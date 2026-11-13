@@ -1,0 +1,6 @@
+teams/app.local.json
+teams/public/
+teams/.vercel/
+.env*
+node_modules/
+.DS_Store
