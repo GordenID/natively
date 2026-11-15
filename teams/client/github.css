@@ -166,3 +166,22 @@
 .tl-table th:nth-child(4),.tl-table td:nth-child(4){min-width:180px}
 .tl-table td.tl-acts{text-align:right}
 .tl-table .tl-pm{white-space:nowrap}
+/* Claude verbinden */
+.gh-steps{margin:0;padding-left:20px;display:grid;gap:10px;color:var(--fg)}
+.gh-steps li{padding-left:2px}
+.gh-steps code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:12.5px}
+.gh-copy{display:flex;gap:8px;margin-top:6px}
+.gh-copy input{flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;font-size:13px;outline:none}
+.gh-note{font-size:12.5px}
+.gh-note a{color:var(--fg-2);text-decoration:underline}
+.gh-recentcard .gh-recent{border-top:0}
+/* Loslegen: Organisation anlegen → natively freischalten */
+.gh-card .gh-steps{padding:0}
+.gh-steps .step{flex-wrap:wrap;align-items:flex-start}
+.gh-steps .num{margin-top:1px}
+.gh-steps .txt{flex:1 1 calc(100% - 38px)}
+.gh-steps .step > .btn,.gh-steps .acts{margin-left:38px;justify-content:flex-start}
+.gh-steps .gh-try{padding:10px 16px}
+.gh-card .link{font-size:12.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:0}
+.gh-card .link:hover{color:var(--fg)}
+.gh-card .gh-sub .link{font-size:12px}

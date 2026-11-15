@@ -20,7 +20,7 @@ GitHub stores everything (files, versions, rights). natively is only the interfa
 - **Edit in place.** Click a paragraph and type. natively saves automatically and bundles an editing session into one version. It never overwrites someone else's change; it warns instead.
 - **History.** Timeline and table of every change across all areas you can see, with restore as a new version.
 - **Admin.** Invite people, manage teams, approve access requests.
-- **AI.** Connect Claude to GitHub with your own account; it only sees what you may see.
+- **AI.** Connect Claude with the natively connector (`https://<your-domain>/api/mcp`, sign in with your own GitHub account). Claude only sees what you may see, writes only Markdown and always saves straight to the main branch, so changes show up in natively at once.
 - **No natively database.** The server only forwards the GitHub sign-in to the browser. Content stays in GitHub, the access token stays in the user's browser.
 
 ## Run it yourself
@@ -49,6 +49,7 @@ GitHub App permissions: Contents (write), Metadata (read), Administration (write
 | `../ui/` | shared interface (also used by the natively Mac app) |
 | `client/github.js` | GitHub bridge: loading, autosave, sync, history, admin |
 | `lib/auth.js`, `api/auth/*` | sign-in (Vercel functions), stores nothing |
+| `lib/mcp.js`, `api/mcp.js` | Claude connector (remote MCP with GitHub sign-in): areas, rules, list, search, read, create, edit, write. Always saves to the main branch, only `.md`, stores nothing |
 | `lib/mock.js` | fake GitHub for tests |
 | `server.js` | local server |
 

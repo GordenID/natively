@@ -13,6 +13,19 @@ const stripLine = l => stripInline(l.replace(/^\s*(#{1,6}\s+|>\s?|[-*+]\s+(\[[ x
   .replace(/\s+/g, ' ').trim();
 /* Nur diese Link-Arten dürfen nach außen öffnen (kein javascript:, data:, file: …) */
 const safeExternal = u => /^(https?:|mailto:)/i.test(String(u || '').trim());
+/* Webadresse erkennen und vervollständigen: „www.x.de“, „x.de/kontakt“, „https://…“ → https-Link, „a@b.de“ → mailto. Sonst null. */
+const WEB_TLD = /\.(de|com|org|net|io|ai|app|dev|co|eu|at|ch|info|me|so|link|xyz|uk|us|fr|nl|it|es|tv|gg|page|site|online|shop|store|tech|cloud|studio|design|edu|gov)$/i;
+function webURL(s){
+  s = String(s || '').trim();
+  if (!s || /\s/.test(s)) return null;
+  if (/^https?:\/\//i.test(s)) return /^https?:\/\/[^/\s]+\.[^/\s]+/i.test(s) ? s : null;
+  if (/^mailto:/i.test(s)) return s;
+  if (/^[^@/]+@[^@/]+\.[a-z]{2,}$/i.test(s)) return 'mailto:' + s;
+  if (/^www\.[^/]+\.[a-z]{2,}/i.test(s)) return 'https://' + s;
+  const host = s.split(/[/?#]/)[0];
+  if (/^[\w-]+(\.[\w-]+)+$/.test(host) && WEB_TLD.test(host) && !/\.(md|markdown|mdown)$/i.test(s.split(/[?#]/)[0])) return 'https://' + s;
+  return null;
+}
 const slug = t => stripInline(t).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '') || 'abschnitt';
 
 function mdFmt(s){
@@ -27,14 +40,14 @@ function mdInline(src, file){
   const hold = h => { ph.push(h); return '\u0001' + (ph.length - 1) + '\u0002'; };
   let s = src.replace(/`([^`]+)`/g, (m, c) => hold('<code>' + esc(c) + '</code>'));
   s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (m, alt, h) => {
-    const r = file ? resolveLink(file, h) : { external:h };
+    const r = file ? resolveLink(file, h) : { external:webURL(h) || h };
     const local = p => typeof localFileURL === 'function' ? localFileURL(p) : 'file://' + encodeURI(p);
     const url = r && r.local ? local(r.local) : r && r.file ? local(r.file.abs) : r && r.external && /^(https?:|data:image\/)/i.test(r.external) ? r.external : '';
     return url ? hold(`<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy">`) : hold(esc(m));
   });
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g, (m, t, h) => {
     const inner = mdFmt(esc(t));
-    const r = file ? resolveLink(file, h) : { external:h };
+    const r = file ? resolveLink(file, h) : { external:webURL(h) || h };
     if (!r) return hold(inner);
     if (r.file) return hold(`<a href="#" class="mdlink" data-open="${esc(r.file.id)}" title="${esc(r.file.abs)}">${inner}</a>`);
     if (r.missing) return hold(`<span class="mdlink missing" title="${esc(typeof t === 'function' ? t('link.missing', { path:r.missing }) : 'Nicht gefunden: ' + r.missing)}">${inner}</span>`);
@@ -43,6 +56,8 @@ function mdInline(src, file){
     if (!safeExternal(r.external)) return hold(`<span class="mdlink missing" title="${esc(r.external)}">${inner}</span>`);
     return hold(`<a href="#" data-url="${esc(r.external)}" title="${esc(r.external)}">${inner}</a>`);
   });
+  // Nackte Adressen im Text (https://… oder www.…) werden klickbar
+  s = s.replace(/(^|[\s(])((?:https?:\/\/|www\.)[^\s<>()]*[^\s<>().,;:!?'"])/gi, (m, pre, u) => { const w = webURL(u); return w ? pre + hold(`<a href="#" data-url="${esc(w)}" title="${esc(w)}">${esc(u)}</a>`) : m; });
   s = s.replace(/<(https?:\/\/[^>\s]+)>/g, (m, u) => hold(`<a href="#" data-url="${esc(u)}">${esc(u)}</a>`));
   s = mdFmt(esc(s));
   for (let n = 0; n < 3 && /\u0001\d+\u0002/.test(s); n++) s = s.replace(/\u0001(\d+)\u0002/g, (m, i) => ph[+i]);
@@ -59,10 +74,12 @@ function mdTable(rows, file){
   return h;
 }
 
-function mdList(lines, file){
-  const raw = lines.map(l => {
+/* base = Zeile im Quelltext, in der die Liste beginnt (nur oberste Ebene). Aufgaben bekommen dann data-ln,
+   damit ein Klick auf das Kästchen genau diese Zeile umschalten kann. */
+function mdList(lines, file, base){
+  const raw = lines.map((l, k) => {
     const m = l.match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
-    return m ? { ind:m[1].replace(/\t/g, '    ').length, ord:/\d/.test(m[2]), text:m[3] } : { cont:true, text:l.trim() };
+    return m ? { ind:m[1].replace(/\t/g, '    ').length, ord:/\d/.test(m[2]), text:m[3], ln:base == null ? null : base + k } : { cont:true, text:l.trim() };
   });
   const its = [];
   raw.forEach(it => { if (it.cont && its.length) its[its.length - 1].text += ' ' + it.text; else if (!it.cont) its.push(it); });
@@ -76,7 +93,7 @@ function mdList(lines, file){
       idx++;
       let t = it.text, cls = '', pre = '';
       const tm = t.match(/^\[([ xX])\]\s+(.*)$/);
-      if (tm) { const done = tm[1] !== ' '; cls = ` class="task${done ? ' done' : ''}"`; pre = `<span class="tbox" aria-hidden="true">${done ? icon('check') : ''}</span>`; t = tm[2]; }
+      if (tm) { const done = tm[1] !== ' '; cls = ` class="task${done ? ' done' : ''}"${it.ln == null ? '' : ` data-ln="${it.ln}"`}`; pre = `<span class="tbox" aria-hidden="true">${done ? icon('check') : ''}</span>`; t = tm[2]; }
       h += `<li${cls}>${pre}${tm ? '<span>' + mdInline(t, file) + '</span>' : mdInline(t, file)}`;
       if (idx < its.length && its[idx].ind > ind) h += build(its[idx].ind);
       h += '</li>';
@@ -141,7 +158,7 @@ function renderMd(src, file, nested){
     if (isList(line)) {
       const buf = [];
       while (i < L.length && (isList(L[i]) || /^\s{2,}\S/.test(L[i]))) { buf.push(L[i]); i++; }
-      out.push(mdList(buf, file));
+      out.push(mdList(buf, file, nested ? null : start + off));
       continue;
     }
     const buf = [];
@@ -152,4 +169,4 @@ function renderMd(src, file, nested){
   return { html:out.join('\n'), heads };
 }
 
-if (typeof module !== 'undefined') module.exports = { renderMd, stripLine, stripInline, slug, esc, safeExternal };
+if (typeof module !== 'undefined') module.exports = { renderMd, stripLine, stripInline, slug, esc, safeExternal, webURL };

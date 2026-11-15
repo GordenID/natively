@@ -36,6 +36,31 @@
   "functions": {
     "api/auth/*.js": {
       "maxDuration": 10
+    },
+    "api/mcp.js": {
+      "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/.well-known/oauth-protected-resource/:path*",
+      "destination": "/api/mcp?sub=prm"
+    },
+    {
+      "source": "/.well-known/oauth-protected-resource",
+      "destination": "/api/mcp?sub=prm"
+    },
+    {
+      "source": "/.well-known/oauth-authorization-server/:path*",
+      "destination": "/api/mcp?sub=asm"
+    },
+    {
+      "source": "/.well-known/oauth-authorization-server",
+      "destination": "/api/mcp?sub=asm"
+    },
+    {
+      "source": "/api/mcp/:sub(authorize|token|register)",
+      "destination": "/api/mcp?sub=:sub"
+    }
+  ]
 }

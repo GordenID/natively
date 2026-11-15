@@ -3,7 +3,7 @@
    oder im Browser vom lokalen Server (web/lib/server.js) über fetch und Server-Sent-Events.
    Aufbau: Zustand S → render*() schreibt HTML → ein Klick-Handler für alles (data-*-Attribute). */
 
-const VERSION = '0.2';
+const VERSION = '0.3';
 const MAC = !!(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.native);
 const WEB = !MAC && !!window.nativelyWeb;   // Browser mit lokalem natively-Server (npx natively-md)
 const GH = !MAC && !WEB && !!window.nativelyGitHub;   // Team-Version: Dateien aus GitHub (teams/client/github.js)
@@ -70,6 +70,9 @@ function resolveLink(from, href){
   if (!href) return null;
   if (/^[a-z][a-z0-9+.-]*:/i.test(href) && !/^file:/i.test(href)) return { external:href };
   if (href.startsWith('#')) return { anchor:href.slice(1) };
+  // „www.normsui.de“ oder „normsui.de“ ohne https:// ist eine Webadresse, kein Dateipfad
+  const web = typeof webURL === 'function' ? webURL(href) : null;
+  if (web) return { external:web };
   let p = href.replace(/^file:\/\//i, '').split('#')[0];
   try { p = decodeURIComponent(p); } catch(e) {}
   if (!p) return null;
@@ -408,6 +411,7 @@ function renderWelcome(){
         <button class="btn" data-act="rescan" id="rescanBtn">${icon('refresh')}${t('btn.rescan')}</button>
       </div>
     </section>
+    ${GH ? window.nativelyGitHub.teamRecent() : ''}
     ${rec.length ? `<section class="recent" aria-label="${t('recent.opened')}">
       <h2>${t(S.recent.length ? 'recent.opened' : 'recent.changed')}</h2>
       ${rec.map(id => { const f = byId[id]; return `<button class="rrow" data-open="${esc(id)}">${icon('file')}<span class="txt"><span class="nm">${esc(f.name)}</span><span class="pth">${esc(rel(f))}</span></span><time datetime="${f.mod}">${fmtDate(f.mod)}</time></button>`; }).join('')}
@@ -518,6 +522,7 @@ function renderDoc(f, keepScroll){
   if (keepScroll != null) sc.scrollTop = keepScroll;
   spy();
   if (GH) window.nativelyGitHub.afterDoc(f);
+  if (window.nativelyEditor) window.nativelyEditor.afterDoc(f);
 }
 function spy(){
   const sc = $('#scroller');
@@ -813,6 +818,7 @@ function doAct(act, el){
     case 'tree-toggle': setTree(!S.treeOn); break;
     case 'scrim': closeDrawers(); renderCrumbs(); break;
     case 'new-tab': newTab(); break;
+    case 'new-file': if (window.nativelyEditor) window.nativelyEditor.newFile(); break;
     case 'close-tab': case 'close-current':
       if (S.tabs.length === 1 && !curTab().file && !curTab().dir && !curTab().view) { if (MAC && act === 'close-tab') native('closeWindow'); }
       else closeTab(S.active);
@@ -966,6 +972,8 @@ window.natively = {
       }
       relink();
     }
+    // Wird gerade ein Block bearbeitet, das Dokument nicht neu zeichnen (sonst ist das Textfeld weg)
+    if (window.nativelyEditor && window.nativelyEditor.busy()) { renderTabs(); renderCrumbs(); renderTree(); renderNav(); queueDrag(); return; }
     render({ keepScroll:keep });
   },
   command(c){ doAct(c, null); },

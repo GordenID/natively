@@ -48,8 +48,12 @@ Object.assign(I18N.en, {
   'gh.personal': 'This area belongs to a personal account. There, invited people can always edit. For read-only rights and teams the area must be in a workspace.',
   'gh.noAdmin': 'You are not admin of any area.', 'gh.newArea': 'New area', 'gh.newAreaPh': 'name, e.g. marketing', 'gh.create': 'Create',
   'gh.created': 'Area {name} created', 'gh.changed': 'Changed on GitHub', 'gh.invited': '{who} invited', 'gh.failed': 'GitHub says: {msg}',
-  'gh.startTitle': 'Get started in 2 minutes', 'gh.startText': 'Allow natively on GitHub once: pick your account or your company, choose “All repositories” and click Install. You will come right back here.',
-  'gh.start': 'Get started', 'gh.firstTitle': 'Create your first area', 'gh.firstText': 'natively is set up for {who}. An area is a folder with its own rights, e.g. for the whole team.', 'gh.first': 'Create first area “wissen”',
+  'gh.startTitle': 'Get started in 2 minutes', 'gh.startText': 'Two steps on GitHub, natively sets up everything else.',
+  'gh.step1': 'Create an organisation on GitHub', 'gh.step1Text': 'Your company gets its own free organisation on GitHub. Only there do teams and read-only rights exist. Choose the “Free” plan.',
+  'gh.step1Btn': 'Create organisation', 'gh.step1Have': 'We have one', 'gh.step1Done': 'Done. If not, open it again.',
+  'gh.step2': 'Allow natively in the organisation', 'gh.step2Text': 'On GitHub pick your organisation, choose “All repositories” and click Install. You come right back here and set up the workspace in one click.',
+  'gh.tryPersonal': 'Just trying it alone? Install natively on your own account', 'gh.firstOrg': 'For a team with teams and read-only rights, create an organisation first.',
+  'gh.start': 'Allow natively', 'gh.firstTitle': 'Create your first area', 'gh.firstText': 'natively is set up for {who}. An area is a folder with its own rights, e.g. for the whole team.', 'gh.first': 'Create first area “wissen”',
   'gh.org': 'Workspace', 'gh.orgLead': 'Everyone in your workspace. Rights come from teams: put a person in a team and they get exactly the areas of that team.', 'gh.loading': 'Loading …',
   'gh.baseWarn': 'Careful: every member currently has “{role}” in every area. For rights per area set “Base permissions” to “No permission” on GitHub.', 'gh.baseFix': 'Change on GitHub',
   'gh.requests': 'Access requests', 'gh.reqLine': '{who} wants {role} in {area}', 'gh.approve': 'Approve', 'gh.reject': 'Decline', 'gh.approved': 'Approved, rights set on GitHub', 'gh.rejected': 'Declined',
@@ -77,7 +81,7 @@ Object.assign(I18N.en, {
   'gh.invitedTo': 'You were invited to the workspace {org}', 'gh.joinText': 'Join with one click, then you see all areas of your team.', 'gh.join': 'Join workspace', 'gh.joined': 'Welcome to the workspace {org}',
   'gh.joinOnGitHub': 'Please accept the invitation to the workspace {org} on GitHub, then come back.', 'gh.setupTitle': 'Set up the workspace {org}', 'gh.setupText': 'One click: natively switches off read access for everyone, creates the team “Alle” and the area “wissen” with a start page and rules for Claude.',
   'gh.setup': 'Set up workspace', 'gh.settingUp': 'Setting up …', 'gh.setupDone': '{org} is ready.', 'gh.setupBaseManual': 'The base permission could not be changed, see Admin.',
-  'gh.claude': 'Connect Claude', 'gh.baseFixNow': 'Fix now', 'gh.invitedLink': '{who} invited. Link copied, send it to them: {link}',
+  'gh.claude': 'Connect Claude', 'gh.claudeCopied': 'Address copied', 'gh.openMissing': 'This file was not found, or you have no access to it.', 'gh.cl.s4': 'Optional: in Claude open the natively connector and set its tools to <b>Always allow</b>. Then Claude no longer asks before every step.', 'gh.cl.text': 'Set it up once. After that Claude saves straight into natively.', 'gh.cl.s1': '<b>Copy the address</b>', 'gh.cl.s2': 'Open Claude: <b>Customize → Connectors</b>, click <b>+</b> and choose <b>Add custom connector</b>.', 'gh.cl.s3': 'Name <code>natively</code>, paste the address, click <b>Add</b>, then <b>Connect</b> and sign in with GitHub.', 'gh.cl.team': 'Claude Team or Enterprise: an owner adds the connector once under Organization settings → Connectors. Then everyone only clicks Connect.', 'gh.cl.copy': 'Copy', 'gh.cl.open': 'Open Claude', 'gh.cl.admin': 'Organization settings', 'gh.cl.help': 'Help from Claude', 'gh.baseFixNow': 'Fix now', 'gh.invitedLink': '{who} invited. Link copied, send it to them: {link}',
   'gh.yourRole': 'Your role', 'gh.files': 'Files', 'gh.members': 'Members', 'gh.owner': 'Owner'
 });
 Object.assign(I18N.de, {
@@ -102,8 +106,12 @@ Object.assign(I18N.de, {
   'gh.personal': 'Dieser Bereich gehört einem persönlichen Konto. Dort dürfen Eingeladene immer bearbeiten. Für reine Leserechte und Teams muss der Bereich in einem Workspace liegen.',
   'gh.noAdmin': 'Du bist in keinem Bereich Admin.', 'gh.newArea': 'Neuer Bereich', 'gh.newAreaPh': 'Name, z. B. marketing', 'gh.create': 'Anlegen',
   'gh.created': 'Bereich {name} angelegt', 'gh.changed': 'Bei GitHub geändert', 'gh.invited': '{who} eingeladen', 'gh.failed': 'GitHub meldet: {msg}',
-  'gh.startTitle': 'In 2 Minuten loslegen', 'gh.startText': 'natively einmal bei GitHub freischalten: dein Konto oder eure Firma wählen, „All repositories“ wählen und auf Install klicken. Danach bist du sofort wieder hier.',
-  'gh.start': 'Loslegen', 'gh.firstTitle': 'Ersten Bereich anlegen', 'gh.firstText': 'natively ist für {who} eingerichtet. Ein Bereich ist ein Ordner mit eigenen Rechten, z. B. für das ganze Team.', 'gh.first': 'Ersten Bereich „wissen“ anlegen',
+  'gh.startTitle': 'In 2 Minuten loslegen', 'gh.startText': 'Zwei Schritte bei GitHub, den Rest richtet natively selbst ein.',
+  'gh.step1': 'Organisation bei GitHub anlegen', 'gh.step1Text': 'Eure Firma bekommt bei GitHub eine eigene, kostenlose Organisation. Nur dort gibt es Teams und reine Leserechte. Plan „Free“ wählen.',
+  'gh.step1Btn': 'Organisation anlegen', 'gh.step1Have': 'Haben wir schon', 'gh.step1Done': 'Erledigt. Falls nicht, nochmal öffnen.',
+  'gh.step2': 'natively in der Organisation freischalten', 'gh.step2Text': 'Bei GitHub eure Organisation wählen, „All repositories“ und Install. Danach bist du sofort wieder hier und richtest den Workspace mit einem Klick ein.',
+  'gh.tryPersonal': 'Nur allein ausprobieren? natively auf deinem eigenen Konto installieren', 'gh.firstOrg': 'Für ein Team mit Teams und reinen Leserechten zuerst eine Organisation anlegen.',
+  'gh.start': 'natively freischalten', 'gh.firstTitle': 'Ersten Bereich anlegen', 'gh.firstText': 'natively ist für {who} eingerichtet. Ein Bereich ist ein Ordner mit eigenen Rechten, z. B. für das ganze Team.', 'gh.first': 'Ersten Bereich „wissen“ anlegen',
   'gh.org': 'Workspace', 'gh.orgLead': 'Alle in eurem Workspace. Rechte kommen über Teams: Wer in einem Team ist, bekommt genau die Bereiche dieses Teams.', 'gh.loading': 'Lade …',
   'gh.baseWarn': 'Achtung: Gerade haben alle Mitglieder in jedem Bereich das Recht „{role}“. Für Rechte pro Bereich bei GitHub „Base permissions“ auf „No permission“ stellen.', 'gh.baseFix': 'Bei GitHub ändern',
   'gh.requests': 'Zugriffsanfragen', 'gh.reqLine': '{who} möchte {role} in {area}', 'gh.approve': 'Genehmigen', 'gh.reject': 'Ablehnen', 'gh.approved': 'Genehmigt, Rechte bei GitHub gesetzt', 'gh.rejected': 'Abgelehnt',
@@ -131,7 +139,7 @@ Object.assign(I18N.de, {
   'gh.invitedTo': 'Du wurdest in den Workspace {org} eingeladen', 'gh.joinText': 'Mit einem Klick beitreten, dann siehst du alle Bereiche deines Teams.', 'gh.join': 'Workspace beitreten', 'gh.joined': 'Willkommen im Workspace {org}',
   'gh.joinOnGitHub': 'Bitte die Einladung in den Workspace {org} bei GitHub annehmen und dann zurückkommen.', 'gh.setupTitle': 'Workspace {org} einrichten', 'gh.setupText': 'Ein Klick: natively schaltet das Leserecht für alle ab, legt das Team „Alle“ und den Bereich „wissen“ mit Startseite und Regeln für Claude an.',
   'gh.setup': 'Workspace einrichten', 'gh.settingUp': 'Richte ein …', 'gh.setupDone': '{org} ist startklar.', 'gh.setupBaseManual': 'Das Grundrecht konnte nicht geändert werden, siehe Admin.',
-  'gh.claude': 'Claude verbinden', 'gh.baseFixNow': 'Jetzt beheben', 'gh.invitedLink': '{who} eingeladen. Link kopiert, schick ihn der Person: {link}',
+  'gh.claude': 'Claude verbinden', 'gh.claudeCopied': 'Adresse kopiert', 'gh.openMissing': 'Diese Datei gibt es nicht, oder du hast keinen Zugriff darauf.', 'gh.cl.s4': 'Optional: In Claude beim Connector natively die Werkzeuge auf <b>Always allow</b> (Immer erlauben) stellen. Dann fragt Claude nicht mehr vor jedem Schritt.', 'gh.cl.text': 'Einmal einrichten, danach speichert Claude direkt in natively.', 'gh.cl.s1': '<b>Adresse kopieren</b>', 'gh.cl.s2': 'Claude öffnen: <b>Customize → Connectors</b>, auf <b>+</b> klicken und <b>Add custom connector</b> (Benutzerdefinierten Connector hinzufügen) wählen.', 'gh.cl.s3': 'Name <code>natively</code>, Adresse einfügen, <b>Add</b> klicken, dann <b>Connect</b> und mit GitHub anmelden.', 'gh.cl.team': 'Claude Team oder Enterprise: Ein Owner fügt den Connector einmal unter Organisationseinstellungen → Connectors hinzu. Danach klickt jede Person nur noch auf Connect.', 'gh.cl.copy': 'Kopieren', 'gh.cl.open': 'Claude öffnen', 'gh.cl.admin': 'Organisationseinstellungen', 'gh.cl.help': 'Hilfe von Claude', 'gh.baseFixNow': 'Jetzt beheben', 'gh.invitedLink': '{who} eingeladen. Link kopiert, schick ihn der Person: {link}',
   'gh.yourRole': 'Deine Rolle', 'gh.files': 'Dateien', 'gh.members': 'Mitglieder', 'gh.owner': 'Inhaber'
 });
 
@@ -292,6 +300,7 @@ async function scan(){
   startPolling();
   // Beim ersten Anmelden direkt die Übersicht öffnen: dort steht, wie es losgeht
   if (!read('natively:gh:welcomed')) { write('natively:gh:welcomed', 1); setTimeout(() => ui() && ui().openFile(OVERVIEW + '|aufbau-und-rechte.md', { pin:true }), 50); }
+  const want = takeOpen(); if (want) setTimeout(() => openWanted(want), 120);   // Link aus Claude
   return data;
 }
 
@@ -314,12 +323,12 @@ function overviewFile(){
             : `How your knowledge is split up and who may do what. As of ${new Date().toLocaleDateString('en-US')}, live from GitHub. natively creates this page automatically, it is always up to date.`, '');
   L.push(de ? '## So legst du los' : '## Getting started', '');
   L.push(de ? '| Schritt | So geht’s |' : '| Step | How |', '| --- | --- |');
-  L.push(de ? `| **1. Bereich anlegen** | ${repos.length ? 'Startseite → Admin → Neuer Bereich' : 'Startseite → **Loslegen** → bei GitHub Install → zurück in natively **Workspace einrichten**. Alles andere stellt natively selbst ein.'} |`
-            : `| **1. Create an area** | ${repos.length ? 'Home → Admin → New area' : 'Home → **Get started**. On GitHub pick your account or company, “All repositories”, Install. Back in natively click “Create first area”.'} |`);
+  L.push(de ? `| **1. Bereich anlegen** | ${repos.length ? 'Startseite → Admin → Neuer Bereich' : 'Startseite → **Organisation anlegen** (kostenlos bei GitHub, Plan „Free“) → **natively freischalten**: bei GitHub die Organisation wählen, Install → zurück in natively **Workspace einrichten**. Alles andere stellt natively selbst ein.'} |`
+            : `| **1. Create an area** | ${repos.length ? 'Home → Admin → New area' : 'Home → **Create organisation** (free on GitHub, “Free” plan) → **Allow natively**: pick the organisation on GitHub, Install → back in natively click **Set up workspace**. natively sets up everything else.'} |`);
   L.push(de ? '| **2. Leute einladen** | Admin → Workspace → GitHub-Name oder E-Mail → Einladen. natively kopiert einen Link, den du der Person schickst. Sie meldet sich an und ist drin. |'
             : '| **2. Invite people** | Home → Admin → enter GitHub username, choose role, Invite. They need a free GitHub account. |');
-  L.push(de ? '| **3. Claude verbinden** | Startseite → **Claude verbinden**, dort den **GitHub**-Connector mit deinem eigenen Konto verbinden. Dann z. B.: „Leg in wissen eine Datei zum Onboarding an.“ Claude sieht nur, was du sehen darfst. |'
-            : '| **3. Connect Claude** | In Claude go to Settings → Connectors and connect **GitHub** with your own account. Then e.g.: “Create an onboarding file in wissen.” Claude only sees what you may see. |');
+  L.push(de ? '| **3. Claude verbinden** | Startseite → **Claude verbinden** zeigt die drei Schritte: Adresse kopieren, in Claude unter **Customize → Connectors** einen **benutzerdefinierten Connector** hinzufügen, mit dem eigenen GitHub-Konto anmelden. Claude speichert dann immer direkt in natively. Dann z. B.: „Leg in wissen eine Datei zum Onboarding an.“ Claude sieht nur, was du sehen darfst. |'
+            : '| **3. Connect Claude** | Home → **Connect Claude** shows three steps: copy the address, add a **custom connector** in Claude under **Customize → Connectors**, sign in with your own GitHub account. Claude then always saves straight into natively. Then e.g.: “Create an onboarding file in wissen.” Claude only sees what you may see. |');
   L.push(de ? '| **Zugriff anfragen** | Startseite → **Zugriff anfragen**, oder Claude bitten: „Leg im Bereich wissen ein Issue „[Zugriff] mein-name: Bearbeiten in marketing“ an.“ Admins genehmigen unter Admin → Workspace. |'
             : '| **Request access** | Home → **Request access**, or ask Claude: “Create an issue “[Zugriff] my-name: Edit in marketing” in the area wissen.” Admins approve under Admin → Workspace. |', '');
   L.push(de ? '## Das Wichtigste' : '## The one thing to learn', '');
@@ -400,6 +409,22 @@ function signOut(expired){
   if (ui()) ui().apply({ full:data });
   if (expired && ui()) ui().toast(T('gh.expired'));
 }
+/* Ohne Installation: erst Organisation bei GitHub anlegen, dann natively dort freischalten. Danach erscheint „Workspace einrichten“. */
+const ORG_STEP = 'natively:orgStep';
+const NEW_ORG_URL = 'https://github.com/account/organizations/new?plan=free';
+function startSteps(){
+  const done = read(ORG_STEP) === 1;
+  const step = (n, ok, title, text, action) => `<div class="step${ok ? ' done' : ''}"><span class="num">${ok ? icon('check') : n}</span>
+      <span class="txt"><span class="nm">${E(title)}</span><span class="pth">${E(text)}</span></span>${action}</div>`;
+  return `<div class="gh-start"><b>${E(T('gh.startTitle'))}</b><p>${E(T('gh.startText'))}</p></div>
+    <div class="setup gh-steps">
+    ${step(1, done, T('gh.step1'), done ? T('gh.step1Done') : T('gh.step1Text'),
+      `<span class="acts"><button class="btn${done ? '' : ' primary'}" data-gh="neworg">${icon('out')}${E(T('gh.step1Btn'))}</button>${done ? '' : `<button class="btn" data-gh="orgdone">${E(T('gh.step1Have'))}</button>`}</span>`)}
+    ${step(2, false, T('gh.step2'), T('gh.step2Text'), `<button class="btn${done ? ' primary' : ''}" data-gh="start">${E(T('gh.start'))}</button>`)}
+    <div class="gh-start gh-try"><button class="link" data-gh="start">${E(T('gh.tryPersonal'))}</button></div>
+    </div>`;
+}
+function orgStepDone(){ write(ORG_STEP, 1); const t = ui() && ui().curTab(); if (t && !t.file && !t.dir && !t.view) ui().render(); }
 function card(){
   if (!auth) return `<section class="card gh-card"><div class="gh-signin">
       <svg class="i gh-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.57c.43.08.58-.18.58-.4v-1.5c-2.36.5-2.86-1.01-2.86-1.01-.39-.98-.95-1.24-.95-1.24-.77-.53.06-.52.06-.52.85.06 1.3.88 1.3.88.76 1.3 1.99.92 2.47.7.08-.55.3-.92.54-1.13-1.89-.21-3.87-.94-3.87-4.2 0-.93.33-1.69.88-2.28-.09-.22-.38-1.08.08-2.25 0 0 .72-.23 2.34.87a8.1 8.1 0 0 1 4.26 0c1.62-1.1 2.34-.87 2.34-.87.46 1.17.17 2.03.08 2.25.55.59.88 1.35.88 2.28 0 3.27-1.99 3.99-3.88 4.2.3.26.58.78.58 1.57v2.33c0 .22.15.49.59.4A8.5 8.5 0 0 0 12 3.5z"/></svg>
@@ -409,16 +434,16 @@ function card(){
   const org0 = installs.find(i => i.type === 'Organization' && orgInfo[i.login] && orgInfo[i.login].admin && !repos.some(r => r.owner.login === i.login));
   const join = pending.map(o => `<div class="gh-start"><b>${E(T('gh.invitedTo', { org:o }))}</b><p>${E(T('gh.joinText'))}</p><button class="btn primary" data-gh="join" data-org="${E(o)}">${E(T('gh.join', { org:o }))}</button></div>`).join('');
   const setup = org0 ? `<div class="gh-start"><b>${E(T('gh.setupTitle', { org:org0.login }))}</b><p>${E(T('gh.setupText'))}</p><button class="btn primary" data-gh="setup" data-org="${E(org0.login)}">${E(T('gh.setup', { org:org0.login }))}</button></div>` : '';
-  const none = join || setup || (repos.length ? '' : !installs.length
-    ? `<div class="gh-start"><b>${E(T('gh.startTitle'))}</b><p>${E(T('gh.startText'))}</p><button class="btn primary" data-gh="start">${E(T('gh.start'))}</button></div>`
-    : `<div class="gh-start"><b>${E(T('gh.firstTitle'))}</b><p>${E(T('gh.firstText', { who:installs[0].login }))}</p><button class="btn primary" data-gh="first">${E(T('gh.first'))}</button></div>`);
+  const none = join || setup || (repos.length ? '' : !installs.length ? startSteps()
+    : `<div class="gh-start"><b>${E(T('gh.firstTitle'))}</b><p>${E(T('gh.firstText', { who:installs[0].login }))}</p><button class="btn primary" data-gh="first">${E(T('gh.first'))}</button>
+       ${installs.some(i => i.type === 'Organization') ? '' : `<p class="gh-sub">${E(T('gh.firstOrg'))} <button class="link" data-gh="neworg">${E(T('gh.step1Btn'))} ↗</button></p>`}</div>`);
   return `<section class="card gh-card"><div class="gh-row">
       ${me ? `<img class="gh-ava" src="${E(me.avatar_url)}&s=64" alt="">` : ''}<span class="txt">${E(T('gh.signedIn', { who:me ? me.login : '…' }))}</span>
       ${adminAny ? `<button class="btn" data-gh="admin">${icon('sliders')}${E(T('gh.admin'))}</button>` : ''}
       <button class="btn" data-gh="claude">${icon('link')}${E(T('gh.claude'))}</button>
       ${repos.length ? `<button class="btn" data-gh="request">${icon('folder-plus')}${E(T('gh.reqBtn'))}</button>` : ''}
       <button class="btn" data-gh="install">${icon('out')}GitHub</button>
-      <button class="btn" data-gh="signout">${E(T('gh.signout'))}</button></div>${none}${recentHtml()}</section>`;
+      <button class="btn" data-gh="signout">${E(T('gh.signout'))}</button></div>${none}</section>`;
 }
 
 /* ---------- Editor: in einen Absatz klicken und tippen. natively speichert selbst (Autosave). ----------
@@ -1255,7 +1280,7 @@ Was alle in ${org} wissen müssen. Stand: ${d}.
 
 - In diesen Text klicken und tippen, mit ⌘S speichern. Jede Änderung wird eine Version.
 - Unter **Admin** Leute einladen und in Teams stecken.
-- Claude mit dem GitHub-Connector verbinden. Wie Claude hier schreibt, steht in [regeln.md](regeln.md).
+- Claude über **Claude verbinden** mit dem natively-Connector verbinden. Wie Claude hier schreibt, steht in [regeln.md](regeln.md).
 `
     : `# Knowledge
 
@@ -1265,7 +1290,7 @@ What everyone at ${org} needs to know. As of ${d}.
 
 - Click into this text and type, save with ⌘S. Every change becomes a version.
 - Invite people and put them into teams under **Admin**.
-- Connect Claude with the GitHub connector. How Claude writes here is in [regeln.md](regeln.md).
+- Connect Claude with the natively connector via **Connect Claude**. How Claude writes here is in [regeln.md](regeln.md).
 `, de ? 'Bereich angelegt' : 'Area created');
   await put('regeln.md', de
     ? `# Regeln für Dateien
@@ -1309,7 +1334,28 @@ How people and AIs like Claude store knowledge here. As of ${d}.
   await reload();
   ui().openFile(`gh-${r.full_name}|README.md`, { pin:true });
 }
-const CLAUDE_CONNECT = 'https://claude.ai/settings/connectors';
+/* Stellen in Claude. Zieht Claude die Seiten um, hier anpassen (Stand 13.11.2026). Die Hilfe-Seite bleibt als Rückfall. */
+const CLAUDE_CONNECT = 'https://claude.ai/customize/connectors';
+const CLAUDE_ADMIN = 'https://claude.ai/admin-settings/connectors';
+const CLAUDE_HELP = 'https://support.claude.com/en/articles/11175166';
+/* Claude verbinden: Schritt für Schritt, Adresse zum Kopieren, Knöpfe direkt an die richtige Stelle */
+function connectClaude(){
+  const url = location.origin + '/api/mcp';
+  const ov = dialog(`<h3>${icon('link')}${E(T('gh.claude'))}</h3><p>${E(T('gh.cl.text'))}</p>
+    <ol class="gh-steps">
+      <li>${T('gh.cl.s1')}<div class="gh-copy"><input readonly value="${E(url)}" spellcheck="false"><button class="btn" data-cl="copy">${icon('copy')}${E(T('gh.cl.copy'))}</button></div></li>
+      <li>${T('gh.cl.s2')}</li>
+      <li>${T('gh.cl.s3')}</li>
+      <li>${T('gh.cl.s4')}</li>
+    </ol>
+    <p class="gh-note">${E(T('gh.cl.team'))} <a href="${CLAUDE_ADMIN}" target="_blank" rel="noopener">${E(T('gh.cl.admin'))}</a> · <a href="${CLAUDE_HELP}" target="_blank" rel="noopener">${E(T('gh.cl.help'))}</a></p>
+    <div class="gh-dbtns"><button class="btn" data-d="cancel">${E(T('gh.cancel'))}</button><button class="btn primary" data-d="open">${E(T('gh.cl.open'))}</button></div>`,
+    act => { if (act === 'open') window.open(CLAUDE_CONNECT, '_blank', 'noopener'); });
+  const copy = async () => { try { await navigator.clipboard.writeText(url); ui().toast(T('gh.claudeCopied')); } catch(e) { ov.querySelector('.gh-copy input').select(); } };
+  ov.querySelector('[data-cl=copy]').addEventListener('click', copy);
+  ov.querySelector('.gh-copy input').addEventListener('focus', e => e.target.select());
+  copy();   // gleich beim Öffnen kopieren: oft reicht dann „Claude öffnen“
+}
 
 /* Anfragen landen als Issue im Bereich „wissen“ (oder im ersten Bereich der Organisation, den die Person sehen darf) */
 const requestRepo = org => { const own = repos.filter(r => r.owner.login === org); return own.find(r => r.name === 'wissen') || own[0]; };
@@ -1517,8 +1563,8 @@ async function createArea(name, owner, first){
   const org = owner && owner.type === 'Organization' ? owner.login : null;
   const de = LANG === 'de', d = new Date().toLocaleDateString(de ? 'de-DE' : 'en-US');
   const text = first
-    ? (de ? `# ${name}\n\nEuer erster Bereich in natively. Stand: ${d}.\n\n## So geht es weiter\n\n- In diesen Text klicken und tippen, mit ⌘S speichern. Jede Änderung wird eine Version.\n- Unter **Admin** Leute einladen und Rechte vergeben.\n- Claude mit dem GitHub-Connector verbinden und Dateien schreiben lassen.\n`
-          : `# ${name}\n\nYour first area in natively. As of ${d}.\n\n## Next steps\n\n- Click into this text and type, save with ⌘S. Every change becomes a version.\n- Invite people and assign rights under **Admin**.\n- Connect Claude with the GitHub connector and let it write files.\n`)
+    ? (de ? `# ${name}\n\nEuer erster Bereich in natively. Stand: ${d}.\n\n## So geht es weiter\n\n- In diesen Text klicken und tippen, mit ⌘S speichern. Jede Änderung wird eine Version.\n- Unter **Admin** Leute einladen und Rechte vergeben.\n- Über **Claude verbinden** den natively-Connector einrichten und Claude Dateien schreiben lassen.\n`
+          : `# ${name}\n\nYour first area in natively. As of ${d}.\n\n## Next steps\n\n- Click into this text and type, save with ⌘S. Every change becomes a version.\n- Invite people and assign rights under **Admin**.\n- Set up the natively connector via **Connect Claude** and let Claude write files.\n`)
     : `# ${name}\n\n${de ? 'Neuer Bereich. Stand: ' : 'New area. As of '}${d}.\n`;
   try {
     const r = await gh(org ? `/orgs/${org}/repos` : '/user/repos', { method:'POST', body:{ name, private:true, auto_init:false, description:'natively' } });
@@ -1548,12 +1594,14 @@ document.addEventListener('click', async e => {
   if (a === 'request') requestAccess();
   if (a === 'join') join(b.dataset.org);
   if (a === 'setup') { b.disabled = true; b.textContent = T('gh.settingUp'); await setupOrg(b.dataset.org); }
-  if (a === 'claude') window.open(CLAUDE_CONNECT, '_blank', 'noopener');
+  if (a === 'claude') connectClaude();   // eigener natively-Connector: speichert immer direkt auf main, nur .md
   if (a === 'fixbase') { const org = b.dataset.org; orgRun(org, () => gh(`/orgs/${org}`, { method:'PATCH', body:{ default_repository_permission:'none' } })); }
   if (a === 'save' || a === 'savenow') saveNow();
   if (a === 'conflict') { const f = curF(); if (f) conflict(f.id); }
   if (a === 'versions') { document.querySelectorAll('.menu').forEach(m => m.remove()); const f = curF(); if (f) ui().openView('verlauf:file:' + f.id); }
   if (a === 'timeline') ui().openView('verlauf');
+  if (a === 'neworg') { window.open(NEW_ORG_URL, '_blank', 'noopener'); orgStepDone(); }
+  if (a === 'orgdone') orgStepDone();
   if (a === 'start') { const u = await installUrl(); if (u) location.href = u; else ui().toast(T('gh.notConfigured')); }
   if (a === 'first') { b.disabled = true; await createArea('wissen', installs[0], true); b.disabled = false; }
   if (a === 'install') { const u = await installUrl(); if (u) window.open(u, '_blank', 'noopener'); else ui().toast(T('gh.notConfigured')); }
@@ -1577,13 +1625,26 @@ window.addEventListener('beforeunload', e => {
   for (const [id, d] of open) if (!d.saving) { clearTimeout(d.timer); doSave(id, { keepalive:true, newVersion:true }); }
   e.preventDefault(); e.returnValue = T('gh.leaveAsk');
 });
+/* Link aus Claude: /?open=owner/bereich/ordner/datei.md öffnet die Datei. Bleibt über das Anmelden hinweg erhalten. */
+const OPEN_KEY = 'natively:gh:open';
+(function(){ const o = new URLSearchParams(location.search).get('open'); if (!o) return; try { sessionStorage.setItem(OPEN_KEY, o); } catch(e) {} history.replaceState(null, '', location.pathname); })();
+function takeOpen(){ let o = null; try { o = sessionStorage.getItem(OPEN_KEY); sessionStorage.removeItem(OPEN_KEY); } catch(e) {} return o; }
+function openWanted(o){
+  const parts = String(o).replace(/^\/+/, '').split('/').filter(Boolean);
+  if (parts.length < 3 || !ui()) return;
+  const full = (parts[0] + '/' + parts[1]).toLowerCase(), path = parts.slice(2).join('/');
+  const r = repos.find(x => x.full_name.toLowerCase() === full);
+  const id = r && srcId(r) + '|' + path;
+  if (id && data && data.files.some(f => f.id === id)) ui().openFile(id, { pin:true });
+  else ui().toast(T('gh.openMissing'));
+}
 /* Anmelden kam gerade zurück: Fehler zeigen */
 const qs = new URLSearchParams(location.search);
 if (qs.has('setup_action') || qs.has('installation_id')) history.replaceState(null, '', location.pathname);   // zurück von „Install“ bei GitHub
 const err = qs.get('gh_error');
 if (err) { history.replaceState(null, '', location.pathname); setTimeout(() => ui() && ui().toast(T('gh.failed', { msg:err })), 300); }
 
-window.nativelyGitHub = { cmd, card, afterDoc, newArea, openAdmin, reload, saveNow, poll, openVersions,
+window.nativelyGitHub = { cmd, card, teamRecent:() => auth && recent.length ? `<section class="card gh-recentcard">${recentHtml()}</section>` : '', afterDoc, newArea, openAdmin, reload, saveNow, poll, openVersions,
   menu:f => f && repoOf(f) && !f.virtual ? `<button role="menuitem" data-gh="versions">${icon('clock')}${E(T('gh.versions'))}</button>` : '',
   renderView, viewName, navState,
   get dirty(){ return dirty; }, get heads(){ return heads; }, get sessions(){ return sessions; }, get editing(){ return editing; }, _tab:TAB,

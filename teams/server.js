@@ -8,6 +8,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import * as auth from './lib/auth.js';
+import * as mcp from './lib/mcp.js';
 import { mock, touch, inspect, removeFile, state as mockState } from './lib/mock.js';
 import { buildPage } from './lib/page.js';
 
@@ -18,7 +19,8 @@ const APP_FILE = path.join(here, 'app.local.json');   // Zugangsdaten der GitHub
 const MOCK = process.argv.includes('--mock');
 const PORT = Number(process.env.PORT) || (MOCK ? 4881 : 4880);
 const BASE = `http://localhost:${PORT}`;
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json' };
+if (MOCK) { process.env.NATIVELY_GH_API = BASE + '/mock/api'; process.env.NATIVELY_MCP_MOCK = '1'; }   // Claude-Connector gegen die Testdaten
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json', '.ico': 'image/x-icon' };
 
 function loadApp() {
   try {
@@ -84,7 +86,8 @@ http.createServer(async (req, res) => {
   try {
     if (p === '/' || p === '/index.html') { res.setHeader('content-type', TYPES['.html']); res.setHeader('cache-control', 'no-store'); return res.end(page()); }
     if (p === '/api/auth/login') return auth.login(req, res);
-    if (p === '/api/auth/callback') return await auth.callback(req, res);
+    if (p === '/api/auth/callback') return await (mcp.isMcpCallback(req) ? mcp.mcpCallback(req, res) : auth.callback(req, res));
+    if (p === '/api/mcp' || p.startsWith('/api/mcp/') || p.startsWith('/.well-known/oauth-')) return await mcp.handle(req, res);
     if (p === '/api/auth/refresh' && MOCK) { const b = await body(req); res.setHeader('content-type', 'application/json'); if (b.refresh_token === 'good') return res.end(JSON.stringify({ access_token: 'mock', refresh_token: 'good', expires_in: 28800 })); res.statusCode = 401; return res.end('{}'); }
     if (p === '/api/auth/refresh') return await auth.refresh(req, res);
     if (p === '/api/auth/config') return auth.config(req, res);
@@ -101,6 +104,7 @@ http.createServer(async (req, res) => {
     if (MOCK && p === '/mock/inspect') { res.setHeader('content-type', 'application/json'); res.end(JSON.stringify(inspect(u))); return; }
     if (MOCK && p === '/mock/offline') { mockState.offline = u.searchParams.get('on') === '1'; res.end(String(mockState.offline)); return; }
     const name = path.basename(p);
+    if (p === '/favicon.ico' || /^\/icon-\d+\.png$/.test(p)) return file(res, path.resolve(here, '../design/web-icons', name));
     if (p === '/github.js' || p === '/github.css') return file(res, path.join(CLIENT, name));
     if (/^\/[\w.-]+\.(js|css|svg|png)$/.test(p)) return file(res, path.join(UI, name));
     res.statusCode = 404; res.end('not found');

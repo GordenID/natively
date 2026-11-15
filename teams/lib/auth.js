@@ -4,25 +4,25 @@
 import crypto from 'node:crypto';
 
 const env = () => ({ id: process.env.GITHUB_CLIENT_ID, secret: process.env.GITHUB_CLIENT_SECRET, slug: process.env.GITHUB_APP_SLUG });
-const origin = req => {
+export const origin = req => {
   const proto = (req.headers['x-forwarded-proto'] || '').split(',')[0] || (req.socket && req.socket.encrypted ? 'https' : 'http');
   return `${proto}://${req.headers['x-forwarded-host'] || req.headers.host}`;
 };
 const cookies = req => Object.fromEntries((req.headers.cookie || '').split(';').map(c => c.trim().split('=')).filter(p => p[0]).map(([k, ...v]) => [k, decodeURIComponent(v.join('='))]));
 const safeBack = b => (typeof b === 'string' && /^\/[\w\-./]*$/.test(b) && !b.startsWith('//')) ? b : '/';
-function send(res, status, body, headers = {}) {
+export function send(res, status, body, headers = {}) {
   res.statusCode = status;
   for (const [k, v] of Object.entries({ 'cache-control': 'no-store', ...headers })) res.setHeader(k, v);
   res.end(body);
 }
-const redirect = (res, url, headers = {}) => send(res, 302, '', { location: url, ...headers });
+export const redirect = (res, url, headers = {}) => send(res, 302, '', { location: url, ...headers });
 async function readJson(req) {
   if (req.body && typeof req.body === 'object') return req.body;
   let raw = '';
   for await (const c of req) { raw += c; if (raw.length > 10000) break; }
   try { return JSON.parse(raw || '{}'); } catch { return {}; }
 }
-async function exchange(params) {
+export async function exchange(params) {
   const r = await fetch('https://github.com/login/oauth/access_token', {
     method: 'POST', headers: { accept: 'application/json', 'content-type': 'application/json' },
     body: JSON.stringify({ client_id: env().id, client_secret: env().secret, ...params })
