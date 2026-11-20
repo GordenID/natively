@@ -31,6 +31,8 @@ GitHub stores everything (files, versions, rights). natively is only the interfa
 
 Try it without a GitHub account: `node server.js --mock` (port 4881) runs against a built-in fake GitHub with sample data.
 
+Tests: `npm test` (Node 22 or newer). They run the real `client/github.js` against the fake GitHub, without a browser.
+
 ### Deploy to Vercel
 
 ```bash
@@ -51,6 +53,7 @@ GitHub App permissions: Contents (write), Metadata (read), Administration (write
 | `lib/auth.js`, `api/auth/*` | sign-in (Vercel functions), stores nothing |
 | `lib/mcp.js`, `api/mcp.js` | Claude connector (remote MCP with GitHub sign-in): areas, rules, list, search, read, create, edit, write. Always saves to the main branch, only `.md`, stores nothing |
 | `lib/mock.js` | fake GitHub for tests |
+| `test/` | automated tests for saving and conflicts (`npm test`, no dependencies, runs in GitHub Actions) |
 | `server.js` | local server |
 
 License: MIT
