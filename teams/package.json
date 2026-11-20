@@ -2,5 +2,5 @@
   "name": "natively-teams",
   "private": true,
   "type": "module",
-  "scripts": { "start": "node server.js", "mock": "node server.js --mock" }
+  "scripts": { "start": "node server.js", "mock": "node server.js --mock", "test": "node --test test/*.test.js" }
 }
